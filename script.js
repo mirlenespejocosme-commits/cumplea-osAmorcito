@@ -159,7 +159,7 @@ window.nextSlide = function(slideNumber) {
                 setTimeout(() => {
                     item.classList.add('show');
                 }, delay);
-                delay += 300; // 300ms delay between each photo appearing
+                delay += 200; // slightly faster
             });
             
             // Show the next arrow after all photos have appeared
@@ -167,6 +167,23 @@ window.nextSlide = function(slideNumber) {
                 nextArrowBtn.classList.remove('hidden');
             }, delay + 500);
         }
+    }
+};
+
+window.prevSlide = function(slideNumber) {
+    const currentSlide = document.querySelector('.slide.slide-active');
+    const targetSlide = document.getElementById(`slide-${slideNumber}`);
+    
+    if (currentSlide) {
+        currentSlide.classList.remove('slide-active');
+        currentSlide.classList.add('hidden');
+    }
+    
+    if (targetSlide) {
+        targetSlide.classList.remove('hidden');
+        setTimeout(() => {
+            targetSlide.classList.add('slide-active');
+        }, 50);
     }
 };
 
@@ -198,3 +215,4 @@ function updateCounters() {
 // Start updating counters immediately and every second
 updateCounters();
 setInterval(updateCounters, 1000);
+
