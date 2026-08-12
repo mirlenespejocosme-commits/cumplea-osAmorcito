@@ -106,7 +106,10 @@
                     <p>Y confirmar que contigo quiero envejecer.</p>
                 </div>
             </div>
-            <button class="next-btn" onclick="nextSlide(3)">Sigue desbloqueando la sorpresa ⬇️</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevSlide(1)">⬅️ Volver</button>
+                <button class="next-btn" onclick="nextSlide(3)">Sigue desbloqueando la sorpresa ⬇️</button>
+            </div>
         </div>
 
         <!-- SLIDE 3: Collage de Fotos -->
@@ -117,7 +120,10 @@
                     <!-- Images will be injected here by JS -->
                 </div>
             </div>
-            <button class="next-btn hidden" id="btn-slide-3" onclick="nextSlide(4)">Sigue desbloqueando la sorpresa ⬇️</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevSlide(2)">⬅️ Volver</button>
+                <button class="next-btn hidden" id="btn-slide-3" onclick="nextSlide(4)">Sigue desbloqueando la sorpresa ⬇️</button>
+            </div>
         </div>
 
         <!-- SLIDE 4: Mensaje Final -->
@@ -145,6 +151,11 @@
                 <footer class="footer-final">
                     <p>Hecho con ❤️ por tu Ingeniero de Sistemas favorito</p>
                 </footer>
+                
+                <div class="nav-buttons final-nav">
+                    <button class="prev-btn" onclick="prevSlide(3)">⬅️ Volver a nuestras fotos</button>
+                    <button class="prev-btn" onclick="prevSlide(1)">🏠 Ir al inicio</button>
+                </div>
             </div>
         </div>
 
