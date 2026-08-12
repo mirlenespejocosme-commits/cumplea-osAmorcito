@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Eliane</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Audio Element -->
+    <audio id="bg-music" src="cancionelegida.mp3"></audio>
+
+    <!-- PHASE 1: TERMINAL BOOT SEQUENCE -->
+    <div id="terminal-screen" class="active">
+        <div class="terminal-header">
+            <div class="mac-buttons">
+                <span class="btn close"></span>
+                <span class="btn minimize"></span>
+                <span class="btn maximize"></span>
+            </div>
+            <div class="title">root@sys-engineer: ~</div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <!-- Terminal text will be injected here by JS -->
+        </div>
+    </div>
+
+    <!-- PHASE 2: LOGIN SCREEN -->
+    <div id="login-screen" class="hidden">
+        <div class="login-container glass-panel">
+            <img src="assets/IMG_2948.JPG" alt="Profile" class="login-profile-img">
+            <h2 class="login-title">🔒 Verificación de Seguridad</h2>
+            <p class="login-subtitle">Verifica que eres mi cumpleañera hermosa para continuar</p>
+            
+            <div class="input-group">
+                <label for="username">Usuario (Apodo):</label>
+                <input type="text" id="username" placeholder="Ingresa tu apodo" autocomplete="off">
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Contraseña (Fecha de nacimiento DDMMYYYY):</label>
+                <input type="password" id="password" placeholder="Ejemplo: 14082002">
+            </div>
+            
+            <div id="login-error" class="error-msg hidden">Acceso denegado. Intenta de nuevo.</div>
+            
+            <button id="login-btn" class="glow-btn">Desbloquear Sorpresa</button>
+        </div>
+    </div>
+
+    <!-- PHASE 3: MULTI-STEP UI -->
+    <div id="ui-screen" class="hidden">
+        <!-- Animated Background Particles -->
+        <div class="particles">
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        </div>
+
+        <!-- SLIDE 1: Título y Contadores -->
+        <div class="slide slide-active" id="slide-1">
+            <div class="slide-content text-center fade-in">
+                <h1 class="glow-text">¡Feliz Cumpleaños, Mi Amor!</h1>
+                <h2 class="subtitle">24 Vueltas al Sol, mi Pomarola hermosa ❤️</h2>
+                
+                <div class="counters-container glass-panel">
+                    <div class="counter-box">
+                        <h4>❤️ Tiempo conociéndote</h4>
+                        <div id="counter-1" class="counter-time">Cargando...</div>
+                    </div>
+                    <div class="counter-box">
+                        <h4>👩‍❤️‍👨 Tiempo en tu corazoncito</h4>
+                        <div id="counter-2" class="counter-time">Cargando...</div>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextSlide(2)">Sigue desbloqueando la sorpresa ⬇️</button>
+        </div>
+
+        <!-- SLIDE 2: Poema -->
+        <div class="slide hidden" id="slide-2">
+            <div class="slide-content text-center">
+                <h3 class="slide-title">ELHU</h3>
+                <div class="poem parchment-panel scrollable-panel">
+                    <p>Anoche no podía dormir,</p>
+                    <p>Porque contigo otra vez quise coincidir,</p>
+                    <p>Coincidir como aquella tarde,</p>
+                    <p>Tarde donde me regalaste tus besos,</p>
+                    <p>Besos delicados y suaves,</p>
+                    <p>Suaves como los pétalos de los tulipanes,</p>
+                    <p>Tulipanes hermosos,</p>
+                    <p>Pero no tan hermosos como tus ojos,</p>
+                    <p>Ojos únicos en el universo existente,</p>
+                    <p>Que lanzan una mirada resplandeciente,</p>
+                    <p>Que ilumina mi vida de valiente,</p>
+                    <p>Mirada que siempre quiero ver,</p>
+                    <p>Tesoro que no quiero perder,</p>
+                    <p>Tesoro que quiero defender,</p>
+                    <p>A capa y espada sin temer,</p>
+                    <p>Y si algún día te llegaran a sustraer,</p>
+                    <p>No dudaría en correr,</p>
+                    <p>Correr detrás de aquella mujer,</p>
+                    <p>Que con su sonrisa me hizo ver,</p>
+                    <p>La maravilla que eres como mujer,</p>
+                    <p>Y confirmar que contigo quiero envejecer.</p>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextSlide(3)">Sigue desbloqueando la sorpresa ⬇️</button>
+        </div>
+
+        <!-- SLIDE 3: Collage de Fotos -->
+        <div class="slide hidden" id="slide-3">
+            <div class="slide-content text-center w-full">
+                <h3 class="slide-title">Nuestros Momentos</h3>
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Images will be injected here by JS -->
+                </div>
+            </div>
+            <button class="next-btn hidden" id="btn-slide-3" onclick="nextSlide(4)">Sigue desbloqueando la sorpresa ⬇️</button>
+        </div>
+
+        <!-- SLIDE 4: Mensaje Final -->
+        <div class="slide hidden" id="slide-4">
+            <div class="slide-content text-center slide-4-container">
+                <h3 class="slide-title">Mi Mensaje Para Ti</h3>
+                
+                <div class="parchment-panel message-content">
+                    <p>Un día como hoy nació una bella mujer, quien diría que en algún momento la iba a conocer, y más aún, con ella el mundo y la vida recorrer.</p>
+                    <p>Pues tu mirada y tu sonrisa son tan hermosas como el atardecer, soy muy feliz al verte crecer, y el día de hoy te quiero proponer...</p>
+                    <p>Que me permitas seguir caminando contigo de la mano, pues tengo sueños que cumplir, como cantarte los cumpleaños hasta que deje de existir.</p>
+                    <p class="highlight-text-parchment">Te amo preciosa. Hoy tengo la oportunidad dichosa de desearte un <br><br><strong>FELIZ CUMPLEAÑOS, MI FUTURA ESPOSA.💍</strong></p>
+                </div>
+
+                <div class="parchment-panel bible-verse">
+                    <h4>Números 6:24-26</h4>
+                    <p>“Jehová te bendiga, y te guarde; Jehová haga resplandecer su rostro sobre ti, y tenga de ti misericordia; Jehová alce sobre ti su rostro, y ponga en ti paz.”</p>
+                </div>
+
+                <div class="parchment-panel bible-verse">
+                    <h4>Jeremías 29:11</h4>
+                    <p>“Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis.”</p>
+                </div>
+
+                <footer class="footer-final">
+                    <p>Hecho con ❤️ por tu Ingeniero de Sistemas favorito</p>
+                </footer>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
