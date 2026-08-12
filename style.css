@@ -209,18 +209,26 @@ body {
 .scrollable-panel {
     max-height: 60vh;
     overflow-y: auto;
+    padding-right: 10px;
 }
 
 .slide-4-container {
-    max-height: 90vh;
+    max-height: 75vh;
     overflow-y: auto;
-    padding-right: 10px;
+    overflow-x: hidden;
+    padding-right: 15px;
+    justify-content: flex-start;
+    display: block; /* Removing flex to fix scrolling bug */
 }
 .slide-4-container::-webkit-scrollbar {
     width: 8px;
 }
+.slide-4-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
 .slide-4-container::-webkit-scrollbar-thumb {
-    background-color: var(--electric-blue);
+    background-color: var(--electric-blue-light);
     border-radius: 10px;
 }
 
@@ -294,7 +302,7 @@ h3.slide-title {
 .poem {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #e0e0e0;
+    color: #4a2e15; /* Changed to brown for parchment contrast */
     text-align: center;
     font-style: italic;
     max-height: 60vh;
@@ -384,9 +392,24 @@ h3.slide-title {
 }
 
 /* Next Button Arrow */
-.next-btn {
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     position: absolute;
     bottom: 40px;
+    width: 100%;
+    z-index: 300;
+}
+
+.final-nav {
+    position: relative;
+    bottom: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.next-btn {
     background: transparent;
     border: none;
     color: var(--electric-blue-light);
@@ -398,7 +421,24 @@ h3.slide-title {
     letter-spacing: 2px;
     text-shadow: 0 0 10px var(--electric-blue-glow);
     padding: 10px;
-    z-index: 300;
+}
+
+.prev-btn {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.prev-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
 .next-btn.hidden {
@@ -578,3 +618,4 @@ h3.slide-title {
     transform: scale(1.05);
     box-shadow: 0 0 25px var(--electric-blue-light);
 }
+
